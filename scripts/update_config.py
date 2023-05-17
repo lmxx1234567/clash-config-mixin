@@ -2,6 +2,7 @@ import requests
 from deepmerge import always_merger
 import yaml
 import sys
+import os
 
 def merge_configs(url, custom_config_path):
     # Fetch the original Clash config
@@ -23,7 +24,9 @@ if __name__ == '__main__':
     url = sys.argv[1]
 
     # Merge the configs
-    merged_config = merge_configs(url, '../custom/custom_config.yml')
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, '../custom/custom_config.yml')
+    merged_config = merge_configs(url, filename)
 
     # Write the merged config to a file
     with open('merged_config.yml', 'w') as f:
