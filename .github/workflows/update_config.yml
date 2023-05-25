@@ -34,5 +34,5 @@ jobs:
     - name: Commit and push changes
       run: |
         git add merged_config.yml
-        git commit -m "Update config"
+        git commit -m "Update config" || true
         git push
